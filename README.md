@@ -9,6 +9,17 @@ opkg update
 opkg install nftables kmod-nft-nat
 ```
 
+place the nftables.conf file in /etc/ and place the nftables file in /etc/init.d
+
+```
+chmod 600 /etc/nftables.conf
+chmod 744 /etc/init.d/nftables
+/etc/init.d/nftables enable
+/etc/init.d/firewall disable
+echo "nf_nat" >> /etc/modules
+```
+
+
 If you want to add other specialty features you may need further kmods
 etc. You can read the
 [wiki](https://openwrt.org/docs/guide-user/firewall/misc/nftables) on
@@ -34,4 +45,12 @@ you'll also need to put your WAN interface in the tagging table here:
 ```
       	    type filter hook ingress device eth1 priority 0; ## FIXME, this can't be a variable so put your WAN device here
 
+```
+
+Finally when things are working a reboot should have you using
+nftables instead of the standard firewall. To check the rules are
+running:
+
+```
+nft list ruleset
 ```
