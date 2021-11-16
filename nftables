@@ -1,0 +1,24 @@
+#!/bin/sh /etc/rc.common
+# nftables start/restart based on Example script
+# Copyright (C) 2007 OpenWrt.org
+ 
+START=10
+STOP=15
+ 
+start() {        
+        echo start
+        # commands to launch application
+	nft -f /etc/nftables.conf
+}                 
+
+restart() {
+	  echo restart
+	  nft -f /etc/nftables.conf
+}
+
+stop() {          
+        echo stop
+        # commands to kill application
+	nft flush ruleset
+}
+
