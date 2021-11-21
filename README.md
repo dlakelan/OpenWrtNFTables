@@ -17,6 +17,8 @@ chmod 744 /etc/init.d/nftables
 /etc/init.d/nftables enable
 /etc/init.d/firewall disable
 echo "nf_nat" >> /etc/modules
+mv 13-nfthotplug /etc/hotplug.d/net/
+chmod u+x /etc/hotplug.d/net/13-nfthotplug
 ```
 
 
