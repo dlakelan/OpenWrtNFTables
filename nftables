@@ -2,7 +2,7 @@
 # nftables start/restart based on Example script
 # Copyright (C) 2007 OpenWrt.org
  
-START=10
+START=19
 STOP=15
  
 start() {        
