@@ -2,8 +2,8 @@
 
 [ -n "$DEVICE" ] || exit 0
 
-[ "$ACTION" = ifup ] && {
-  nft -f /etc/nftables.conf
-  
+[ "$ACTION" = ifup ] && /etc/init.d/nftables enabled && {
+	/etc/init.d/nftables restart
+	logger -t nftables "Restarting nftables due to $ACTION of $INTERFACE ($DEVICE)"
 }
 
