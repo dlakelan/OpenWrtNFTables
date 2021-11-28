@@ -2,8 +2,6 @@
 
 [ -n "$DEVICE" ] || exit 0
 
-[ "$ACTION" = ifup ] && {
+[ "$ACTION" = ifup ] && /etc/init.d/nftables enabled && {
   nft -f /etc/nftables.conf
-  
 }
-
